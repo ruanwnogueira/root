@@ -1,15 +1,12 @@
 {
   "name": "@mfe/root-config",
   "scripts": {
-    "start": "webpack serve --port 9000 --env isLocal",
-    "lint": "eslint src --ext js,ts,tsx",
-    "test": "cross-env BABEL_ENV=test jest --passWithNoTests",
+    "build": "webpack --mode=production",
+    "lint": "eslint src",
     "format": "prettier --write .",
-    "check-format": "prettier --check .",
-    "prepare": "husky install",
-    "build": "concurrently yarn:build:*",
-    "build:webpack": "webpack --mode=production",
-    "build:types": "tsc"
+    "start:dev": "webpack-dev-server --mode=development --port 9000 --env isLocal=true",
+    "start": "node src/server.js",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
@@ -42,6 +39,7 @@
     "@types/jest": "^27.0.1",
     "@types/systemjs": "^6.1.1",
     "@types/webpack-env": "^1.16.2",
+    "express": "^4.19.2",
     "single-spa": "^5.9.3"
   },
   "types": "dist/mfe-root-config.d.ts"
