@@ -29,34 +29,12 @@
 
     More information about shared dependencies can be found at https://single-spa.js.org/docs/recommended-setup#sharing-with-import-maps.
   -->
-  <script type="systemjs-importmap">
-    {
-      "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
-        "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
-        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
-        "vue": "https://cdn.jsdelivr.net/npm/vue@3.0.5/dist/vue.global.prod.js",
-        "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@4.0.8/dist/vue-router.esm-browser.js"
-      }
-    }
-  </script>
+   <script type="systemjs-importmap" src="https://mfe-tech.s3.sa-east-1.amazonaws.com/import-maps.json"></script>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
 
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
 
-  <% if (isLocal) { %>
-  <script type="systemjs-importmap">
-    {
-      "imports": {
-        "@mfe/root-config": "//localhost:9000/mfe-root-config.js",
-        "@mfe/react": "//localhost:8080/mfe-root-config.js",
-        "@mfe/navbar": "//localhost:8081/mfe-root-config.js",
-        "@mfe/vueapp": "//localhost:8082/js/app.js"
-      }
-    }
-  </script>
-  <% } %>
 
   <!--
     If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded

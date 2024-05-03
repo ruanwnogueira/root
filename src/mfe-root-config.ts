@@ -9,13 +9,13 @@ registerApplication({
 registerApplication({
   name: "@mfe/react",
   app: () => System.import<LifeCycles>("http://localhost:8080/mfe-newApp.js"),
-  activeWhen: ["/react"],
+  activeWhen: ["/app", "/react"],
 });
 
 registerApplication({
   name: "@mfe/vueapp",
   app: () => System.import<LifeCycles>("http://localhost:8082/js/app.js"),
-  activeWhen: ["/vue"],
+  activeWhen: ["/app", "/vue"],
 });
 
 start({
