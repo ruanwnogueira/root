@@ -1,22 +1,25 @@
 import { registerApplication, start, LifeCycles } from "single-spa";
 
-registerApplication({
-  name: "@mfe/navbar",
-  app: () => System.import<LifeCycles>("@mfe/navbar"),
-  activeWhen: [""],
-});
+registerApplication(
+  "@mfe/navbar",
+  () => System.import<LifeCycles>("@mfe/navbar"),
+  (location) => true,
+  { domElement: document.getElementById("nav") }
+);
 
-registerApplication({
-  name: "@mfe/react",
-  app: () => System.import<LifeCycles>("@mfe/react"),
-  activeWhen: ["/app", "/react"],
-});
+registerApplication(
+  "@mfe/react",
+  () => System.import<LifeCycles>("@mfe/react"),
+  (location) => ["/app", "/react"].includes(location.pathname),
+  { domElement: document.getElementById("react") }
+);
 
-registerApplication({
-  name: "@mfe/vueapp",
-  app: () => System.import<LifeCycles>("@mfe/vueapp"),
-  activeWhen: ["/app", "/vue"],
-});
+registerApplication(
+  "@mfe/vueapp",
+  () => System.import<LifeCycles>("@mfe/vueapp"),
+  (location) => ["/app", "/vue"].includes(location.pathname),
+  { domElement: document.getElementById("vue") }
+);
 
 start({
   urlRerouteOnly: true,

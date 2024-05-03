@@ -29,11 +29,19 @@
 
     More information about shared dependencies can be found at https://single-spa.js.org/docs/recommended-setup#sharing-with-import-maps.
   -->
-   <script type="systemjs-importmap" src="https://mfe-tech.s3.sa-east-1.amazonaws.com/import-maps.json"></script>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
+  
+  <script type="systemjs-importmap" src="https://mfe-tech.s3.sa-east-1.amazonaws.com/import-maps.json"></script>
 
-  <!-- Add your organization's prod import map URL to this script's src  -->
-  <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
+  <% if (isLocal) %>
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "@mfe/root-config": "//localhost:9000/mfe-root-config.js"
+      }
+    }
+  </script>
+
 
 
   <!--
@@ -55,7 +63,14 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
-  <main></main>
+  <main>
+    <div id="nav"></div>
+    <div style="display: flex; flex-direction: row">
+      <div id="react" style="flex-grow: 1"></div>
+      <div id="vue" style="flex-grow: 1"></div>
+    </div>
+
+  </main>
   <script>
     System.import('@mfe/root-config');
   </script>
